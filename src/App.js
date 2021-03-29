@@ -1,22 +1,27 @@
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import CaesarCipher from './CaesarCipher'
 
 function App() {
+  const [value,setValue]= useState("");
+  const [shiftValue,setShiftValue]= useState(0);
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <div>
+          <span className="TextField"> Value</span>
+          <input type="text" onChange={(e)=>{
+            setValue(e.target.value)
+          }}/>
+        </div>
+        <div >
+          <span className="TextField"> Shift</span>
+          <input type="number" onChange={(e)=>{
+            setShiftValue(e.target.value)
+          }}/>
+        </div>
+        <span>{CaesarCipher(value, shiftValue)}</span>
       </header>
     </div>
   );
